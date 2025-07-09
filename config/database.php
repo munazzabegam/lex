@@ -1,16 +1,16 @@
 <?php
 class Database {
-    // public $host = "localhost";
-    // public $db_name = "u232955123_lex_juris";
-    // public $username = "u232955123_brandweave";
-    // public $password = "BrandWeave@25";
-    // public $conn;
-
     public $host = "localhost";
-    public $db_name = "lex_juris";
-    public $username = "root";
-    public $password = "";
+    public $db_name = "u232955123_lex_juris";
+    public $username = "u232955123_brandweave";
+    public $password = "BrandWeave@25";
     public $conn;
+
+    // public $host = "localhost";
+    // public $db_name = "lex_juris";
+    // public $username = "root";
+    // public $password = "";
+    // public $conn;
 
     public function getConnection() {
         $this->conn = null;
