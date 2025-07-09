@@ -69,7 +69,7 @@ if (isset($_POST['accept_disclaimer'])) {
     $_SESSION['user_ip'] = $ip;
     
     // Redirect to main page
-    header("Location: " . getPageUrl('index.php'));
+    header("Location: " . getPagePath('index.php'));
     exit();
 }
 ?>
