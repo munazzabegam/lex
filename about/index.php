@@ -1,6 +1,6 @@
 <?php
-// Always include the path config first using a static path
-require_once __DIR__ . '/../config/paths.php';
+// Remove path config include
+// require_once __DIR__ . '/../config/paths.php';
 
 $page_title = "About Us - LexJuris";
 $current_page = "about";
@@ -8,8 +8,8 @@ $current_page = "about";
 // Mark this as NOT the home page for the header include
 $is_home_page = false;
 
-// Include database connection using path helper
-require_once getConfigPath('database.php');
+// Include database connection using absolute path
+require_once __DIR__ . '/../config/database.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,9 +20,9 @@ require_once getConfigPath('database.php');
     <meta name="keywords" content="about lexjuris, law firm mangalore, legal team karnataka, experienced advocates, law chamber history, legal services mangalore, trusted lawyers, professional advocates">
     <title><?php echo $page_title; ?></title>
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="<?php echo getBaseUrl(); ?>/assets/images/favicon.png">
-    <link rel="apple-touch-icon" href="<?php echo getBaseUrl(); ?>/assets/images/favicon.png">
-    <link rel="manifest" href="<?php echo getBaseUrl(); ?>/assets/images/site.webmanifest">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/images/favicon.png">
+    <link rel="manifest" href="/assets/images/site.webmanifest">
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -30,7 +30,7 @@ require_once getConfigPath('database.php');
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="<?php echo getBaseUrl(); ?>/assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -108,8 +108,8 @@ require_once getConfigPath('database.php');
 </head>
 <body>
     <?php
-    // Replace header/footer includes with path helpers
-    include getIncludePath('header.php');
+    // Use absolute path for header include
+    include __DIR__ . '/../includes/header.php';
     ?>
 
 
@@ -156,22 +156,22 @@ require_once getConfigPath('database.php');
                 <?php
                 $services = [
                     [
-                        'img' => getAssetPath('images/card_images/civil_law_card.jpg'),
-                        'svg' => getAssetPath('images/icons/gavel.svg'),
+                        'img' => '../assets/images/card_images/civil_law_card.jpg',
+                        'svg' => '../assets/images/icons/gavel.svg',
                         'title' => 'Civil Law',
                         'desc' => 'Private disputes between individuals or organizations, including contracts, torts, property, and family law.',
                         'link' => '#'
                     ],
                     [
-                        'img' => getAssetPath('images/card_images/criminal_law_card.jpeg'),
-                        'svg' => getAssetPath('images/icons/gavel.svg'),
+                        'img' => '../assets/images/card_images/criminal_law_card.jpeg',
+                        'svg' => '../assets/images/icons/gavel.svg',
                         'title' => 'Criminal Law',
                         'desc' => 'Prosecution of crimes against society, including theft, assault, cybercrime, and more.',
                         'link' => '#'
                     ],
                     [
-                        'img' => getAssetPath('images/card_images/family-law.jpg'),
-                        'svg' => getAssetPath('images/icons/gavel.svg'),
+                        'img' => '../assets/images/card_images/family-law.jpg',
+                        'svg' => '../assets/images/icons/gavel.svg',
                         'title' => 'Family Law',
                         'desc' => 'Matters such as marriage, divorce, child custody, maintenance, and domestic violence.',
                         'link' => '#'
@@ -197,7 +197,7 @@ require_once getConfigPath('database.php');
             </div>
             <div class="row">
                 <div class="col-12 text-center mt-3">
-                    <a href="<?php echo getPagePath('services/'); ?>" class="btn btn-warning btn-lg px-5">View More</a>
+                    <a href="../services/" class="btn btn-warning btn-lg px-5">View More</a>
                 </div>
             </div>
         </div>
@@ -287,14 +287,14 @@ require_once getConfigPath('database.php');
 
 
     <?php
-    // Replace header/footer includes with path helpers
-    include getIncludePath('footer.php');
+    // Use absolute path for footer include
+    include __DIR__ . '/../includes/footer.php';
     ?>
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
-    <script src="<?php echo getBaseUrl(); ?>/assets/js/main.js"></script>
+    <script src="/assets/js/main.js"></script>
     <!-- Before </body> tag, ensure AOS is included and initialized -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
