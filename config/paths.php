@@ -75,20 +75,15 @@ function getAdminPath($page) {
 
 // Get base URL for the project (for absolute URLs when needed)
 function getBaseUrl() {
-    $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
     $host = $_SERVER['HTTP_HOST'];
     $scriptName = $_SERVER['SCRIPT_NAME'];
-    
-    // Remove the current script name to get the directory
-    $pathInfo = pathinfo($scriptName);
-    $basePath = $pathInfo['dirname'];
-    
-    // If we're in a subdirectory, include it
-    if ($basePath !== '/') {
-        return $protocol . '://' . $host . $basePath;
+    $parts = explode('/', trim($scriptName, '/'));
+    $base = '';
+    if (count($parts) > 1) {
+        $base = '/' . $parts[0];
     }
-    
-    return $protocol . '://' . $host;
+    return $protocol . '://' . $host . $base;
 }
 
 // Get project base path (for includes that need absolute paths)
