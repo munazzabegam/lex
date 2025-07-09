@@ -42,11 +42,8 @@ function getLocationFromIP($ip) {
     return 'Unknown';
 }
 
-// Include path configuration
-require_once '../config/paths.php';
-
 // Include database connection
-require_once '../config/database.php';
+require_once __DIR__ . '/../config/database.php';
 
 // If disclaimer is accepted
 if (isset($_POST['accept_disclaimer'])) {
@@ -72,8 +69,8 @@ if (isset($_POST['accept_disclaimer'])) {
     $_SESSION['disclaimer_accepted'] = true;
     $_SESSION['user_ip'] = $ip;
     
-    // Redirect to main page
-    header("Location: " . getBaseUrl() . "/index.php");
+    // Redirect to main page (root-relative, no folder name)
+    header("Location: ../index.php");
     exit();
 }
 ?>
@@ -86,10 +83,10 @@ if (isset($_POST['accept_disclaimer'])) {
     <meta name="keywords" content="legal disclaimer, terms of use, legal information, law firm disclaimer, legal terms, professional services">
     <title>Legal Disclaimer - LexJuris</title>
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="<?php echo getAssetPath('images/favicon.png'); ?>">
-    <link rel="apple-touch-icon" href="<?php echo getAssetPath('images/favicon.png'); ?>">
-    <link rel="manifest" href="<?php echo getAssetPath('images/site.webmanifest'); ?>">
-    <link rel="stylesheet" href="<?php echo getAssetPath('css/style.css'); ?>">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="assets/images/favicon.png">
+    <link rel="manifest" href="assets/images/site.webmanifest">
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
         .disclaimer-container {
             max-width: 800px;
@@ -198,22 +195,11 @@ if (isset($_POST['accept_disclaimer'])) {
                 font-size: 14px;
                 max-height: 300px;
             }
-            .disclaimer-text h1 {
-                font-size: 18px;
-            }
-            .btn {
-                padding: 10px 12px;
-                font-size: 14px;
-                margin: 0 4px 10px 4px;
-            }
-            .checkbox-container {
-                padding: 0 5px;
-                font-size: 13px;
-            }
         }
     </style>
 </head>
 <body>
+<!-- You can include header/footer here if needed, using __DIR__ or dirname(__DIR__) -->
     <div class="disclaimer-container">
         <div class="disclaimer-text">
             <h1>Welcome to the website of Lex Juris</h1>
