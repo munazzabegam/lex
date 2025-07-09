@@ -1,3 +1,7 @@
+<?php
+// Include path configuration
+require_once '../config/paths.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -130,12 +134,12 @@
 <body>
     <div class="container">
         <div class="logo-placeholder">
-            <img src="../assets/images/logo.png" alt="Lex Juris Logo">
+            <img src="<?php echo getAssetPath('images/logo.png'); ?>" alt="Lex Juris Logo">
         </div>
-        <img src="../assets/images/offline.gif" alt="Offline" class="icon-status-gif">
+        <img src="<?php echo getAssetPath('images/offline.gif'); ?>" alt="Offline" class="icon-status-gif">
         <h1>Connection Lost</h1>
         <p>We're unable to establish a connection to our servers. Please check your internet connection and try again.</p>
-        <a href="../index.php" class="btn-action">
+        <a href="<?php echo getPageUrl('index.php'); ?>" class="btn-action">
             <i class="fas fa-sync-alt"></i>
             Retry Connection
         </a>

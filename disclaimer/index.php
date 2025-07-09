@@ -38,11 +38,11 @@ function getLocationFromIP($ip) {
     return 'Unknown';
 }
 
+// Include path configuration
+require_once '../config/paths.php';
+
 // Include database connection
 require_once '../config/database.php';
-
-$project_folder = explode('/', $_SERVER['SCRIPT_NAME'])[1];
-$project_base = '/' . $project_folder . '/';
 
 // If disclaimer is accepted
 if (isset($_POST['accept_disclaimer'])) {
@@ -69,7 +69,7 @@ if (isset($_POST['accept_disclaimer'])) {
     $_SESSION['user_ip'] = $ip;
     
     // Redirect to main page
-    header("Location: " . $project_base . "index.php");
+    header("Location: " . getPageUrl('index.php'));
     exit();
 }
 ?>
@@ -82,10 +82,10 @@ if (isset($_POST['accept_disclaimer'])) {
     <meta name="keywords" content="legal disclaimer, terms of use, legal information, law firm disclaimer, legal terms, professional services">
     <title>Legal Disclaimer - LexJuris</title>
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
-    <link rel="apple-touch-icon" href="../assets/images/favicon.png">
-    <link rel="manifest" href="../assets/images/site.webmanifest">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/png" href="<?php echo getAssetPath('images/favicon.png'); ?>">
+    <link rel="apple-touch-icon" href="<?php echo getAssetPath('images/favicon.png'); ?>">
+    <link rel="manifest" href="<?php echo getAssetPath('images/site.webmanifest'); ?>">
+    <link rel="stylesheet" href="<?php echo getAssetPath('css/style.css'); ?>">
     <style>
         .disclaimer-container {
             max-width: 800px;

@@ -1,4 +1,9 @@
 <?php
+// Include path configuration if not already included
+if (!function_exists('getAssetPath')) {
+    require_once __DIR__ . '/../config/paths.php';
+}
+
 // Loader styles
 $loader_styles = "
 <style>
@@ -58,7 +63,7 @@ $loader_styles = "
 $loader_html = "
 <div class='page-loader'>
     <div class='loader-content'>
-        <img src='" . (($current_page === 'home') ? 'assets/images/logo.png' : '../assets/images/logo.png') . "' alt='Lex Juris Logo' class='loader-logo'>
+        <img src='" . getAssetPath('images/logo.png') . "' alt='Lex Juris Logo' class='loader-logo'>
     </div>
 </div>
 ";

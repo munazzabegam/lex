@@ -1,4 +1,7 @@
 <?php
+// Include path configuration
+require_once '../config/paths.php';
+
 $page_title = "Our Services - LexJuris";
 $current_page = "services";
 ?>
@@ -11,9 +14,9 @@ $current_page = "services";
     <meta name="keywords" content="legal services mangalore, civil law advocate, criminal law lawyer, family law attorney, corporate law firm, property law expert, legal consultation karnataka, best lawyer mangalore">
     <title><?php echo $page_title; ?></title>
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
-    <link rel="apple-touch-icon" href="../assets/images/favicon.png">
-    <link rel="manifest" href="../assets/images/site.webmanifest">
+    <link rel="icon" type="image/png" href="<?php echo getAssetPath('images/favicon.png'); ?>">
+    <link rel="apple-touch-icon" href="<?php echo getAssetPath('images/favicon.png'); ?>">
+    <link rel="manifest" href="<?php echo getAssetPath('images/site.webmanifest'); ?>">
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -21,7 +24,7 @@ $current_page = "services";
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo getAssetPath('css/style.css'); ?>">
     <style>
         html, body {
             max-width: 100vw;
@@ -173,7 +176,7 @@ $current_page = "services";
     </style>
 </head>
 <body>
-    <?php include '../includes/header.php'; ?>
+    <?php include getIncludePath('header.php'); ?>
 
     <!-- Services Overview -->
     <section class="services-overview py-5">
@@ -396,7 +399,7 @@ $current_page = "services";
         </div>
     </section>
 
-<?php include '../includes/footer.php'; ?>
+    <?php include getIncludePath('footer.php'); ?>
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

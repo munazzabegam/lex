@@ -1,4 +1,7 @@
 <?php
+// Always include the path config first using a static path
+require_once __DIR__ . '/../config/paths.php';
+
 $page_title = "Blog - LexJuris";
 $current_page = "blog";
 
@@ -102,8 +105,7 @@ $tags_query = "SELECT DISTINCT TRIM(tag) as tag
 $tags_result = $conn->query($tags_query);
 $tags = $tags_result->fetch_all(MYSQLI_ASSOC);
 
-$project_folder = explode('/', $_SERVER['SCRIPT_NAME'])[1];
-$project_base = '/' . $project_folder . '/';
+// Path configuration is now handled by config/paths.php
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -114,9 +116,9 @@ $project_base = '/' . $project_folder . '/';
     <meta name="keywords" content="legal blog mangalore, legal insights, case studies, legal advice, law articles, legal updates, advocate blog, legal knowledge">
     <title><?php echo $page_title; ?></title>
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
-    <link rel="apple-touch-icon" href="../assets/images/favicon.png">
-    <link rel="manifest" href="../assets/images/site.webmanifest">
+    <link rel="icon" type="image/png" href="<?php echo getAssetPath('images/favicon.png'); ?>">
+    <link rel="apple-touch-icon" href="<?php echo getAssetPath('images/favicon.png'); ?>">
+    <link rel="manifest" href="<?php echo getAssetPath('images/site.webmanifest'); ?>">
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -124,10 +126,10 @@ $project_base = '/' . $project_folder . '/';
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo getAssetPath('css/style.css'); ?>">
 </head>
 <body>
-    <?php include '../includes/header.php'; ?>
+    <?php include getIncludePath('header.php'); ?>
 
     <!-- Blog Section -->
     <section class="blog-section py-5">
@@ -154,15 +156,15 @@ $project_base = '/' . $project_folder . '/';
                                         <?php if (!empty($post['video_url'])): ?>
                                             <div class="ratio ratio-16x9 mb-3">
                                                 <video controls class="rounded">
-                                                    <source src="<?php echo $project_base . htmlspecialchars($post['video_url']); ?>" type="video/mp4">
+                                                    <source src="<?php echo getPagePath(htmlspecialchars($post['video_url'])); ?>" type="video/mp4">
                                                     Your browser does not support the video tag.
                                                 </video>
                                             </div>
                                         <?php elseif (!empty($post['cover_image'])): ?>
-                                            <?php $cover_image = (strpos($post['cover_image'], 'http') === 0) ? $post['cover_image'] : $project_base . ltrim($post['cover_image'], '/'); ?>
+                                            <?php $cover_image = (strpos($post['cover_image'], 'http') === 0) ? $post['cover_image'] : getPagePath(ltrim($post['cover_image'], '/')); ?>
                                             <img src="<?php echo htmlspecialchars($cover_image); ?>" class="img-fluid rounded" alt="<?php echo htmlspecialchars($post['title']); ?>" style="width: 100%; height: auto; object-fit: cover;">
                                         <?php else: ?>
-                                            <img src="../assets/images/blog-default.jpg" class="img-fluid rounded" alt="Default Blog Image" style="width: 100%; height: auto; object-fit: cover;">
+                                            <img src="<?php echo getAssetPath('images/blog-default.jpg'); ?>" class="img-fluid rounded" alt="Default Blog Image" style="width: 100%; height: auto; object-fit: cover;">
                                         <?php endif; ?>
                                     </div>
                                     <div class="col-12">
@@ -185,17 +187,17 @@ $project_base = '/' . $project_folder . '/';
                         <nav aria-label="Blog pagination">
                             <ul class="pagination justify-content-center">
                                 <li class="page-item <?php echo $current_page_num <= 1 ? 'disabled' : ''; ?>">
-                                    <a class="page-link" href="?page=<?php echo $current_page_num - 1; ?><?php echo !empty($search) ? '&search=' . urlencode($search) : ''; ?><?php echo !empty($category_filter) ? '&category=' . urlencode($category_filter) : ''; ?><?php echo !empty($tag_filter) ? '&tag=' . urlencode($tag_filter) : ''; ?>" aria-label="Previous">
+                                    <a class="page-link" href="<?php echo getPagePath('blog/'); ?>?page=<?php echo $current_page_num - 1; ?><?php echo !empty($search) ? '&search=' . urlencode($search) : ''; ?><?php echo !empty($category_filter) ? '&category=' . urlencode($category_filter) : ''; ?><?php echo !empty($tag_filter) ? '&tag=' . urlencode($tag_filter) : ''; ?>" aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
                                 </li>
                                 <?php for ($i = 1; $i <= $total_pages; $i++): ?>
                                     <li class="page-item <?php echo $i === $current_page_num ? 'active' : ''; ?>">
-                                        <a class="page-link" href="?page=<?php echo $i; ?><?php echo !empty($search) ? '&search=' . urlencode($search) : ''; ?><?php echo !empty($category_filter) ? '&category=' . urlencode($category_filter) : ''; ?><?php echo !empty($tag_filter) ? '&tag=' . urlencode($tag_filter) : ''; ?>"><?php echo $i; ?></a>
+                                        <a class="page-link" href="<?php echo getPagePath('blog/'); ?>?page=<?php echo $i; ?><?php echo !empty($search) ? '&search=' . urlencode($search) : ''; ?><?php echo !empty($category_filter) ? '&category=' . urlencode($category_filter) : ''; ?><?php echo !empty($tag_filter) ? '&tag=' . urlencode($tag_filter) : ''; ?>"><?php echo $i; ?></a>
                                     </li>
                                 <?php endfor; ?>
                                 <li class="page-item <?php echo $current_page_num >= $total_pages ? 'disabled' : ''; ?>">
-                                    <a class="page-link" href="?page=<?php echo $current_page_num + 1; ?><?php echo !empty($search) ? '&search=' . urlencode($search) : ''; ?><?php echo !empty($category_filter) ? '&category=' . urlencode($category_filter) : ''; ?><?php echo !empty($tag_filter) ? '&tag=' . urlencode($tag_filter) : ''; ?>" aria-label="Next">
+                                    <a class="page-link" href="<?php echo getPagePath('blog/'); ?>?page=<?php echo $current_page_num + 1; ?><?php echo !empty($search) ? '&search=' . urlencode($search) : ''; ?><?php echo !empty($category_filter) ? '&category=' . urlencode($category_filter) : ''; ?><?php echo !empty($tag_filter) ? '&tag=' . urlencode($tag_filter) : ''; ?>" aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
                                     </a>
                                 </li>
@@ -268,11 +270,11 @@ $project_base = '/' . $project_folder . '/';
         </div>
     </section>
 
-    <?php include '../includes/footer.php'; ?>
+    <?php include getIncludePath('footer.php'); ?>
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
-    <script src="../assets/js/main.js"></script>
+    <script src="<?php echo getAssetPath('js/main.js'); ?>"></script>
 </body>
 </html> 

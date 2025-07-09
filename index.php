@@ -1,27 +1,23 @@
 <?php
 session_start();
 
+// Include path configuration FIRST, using a static path
+require_once __DIR__ . '/config/paths.php';
+
 // Check if disclaimer has been accepted
 if (!isset($_SESSION['disclaimer_accepted']) || $_SESSION['disclaimer_accepted'] !== true) {
-    header("Location: disclaimer/index.php");
+    header("Location: " . getPagePath('disclaimer/index.php'));
     exit();
 }
 
-// Get current page for active menu highlighting (same as sidebar.php)
-$current_page = basename($_SERVER['PHP_SELF']);
-$current_full_path = $_SERVER['PHP_SELF'];
-
-// Alternative for URL rewriting (uncomment if using .htaccess)
-// $current_full_path = $_SERVER['REQUEST_URI'];
-
-// Sanitize for security
-$current_page = htmlspecialchars($current_page);
-$current_full_path = htmlspecialchars($current_full_path);
-
 $page_title = "LexJuris Law Chamber";
+$current_page = "home";
+
+// Mark this as the home page for the header include
+$is_home_page = true;
 
 // Include database connection
-require_once 'config/database.php';
+require_once getConfigPath('database.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,9 +28,9 @@ require_once 'config/database.php';
     <meta name="keywords" content="best advocate in mangalore, best lawyer in karnataka, top law chamber mangalore, expert lawyers mangalore, civil law advocate, criminal law lawyer, family law attorney, corporate law firm, legal services karnataka, trusted advocates mangalore">
     <title><?php echo $page_title; ?></title>
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    <link rel="apple-touch-icon" href="assets/images/favicon.png">
-    <link rel="manifest" href="assets/images/site.webmanifest">
+    <link rel="icon" type="image/png" href="<?php echo getAssetPath('images/favicon.png'); ?>">
+    <link rel="apple-touch-icon" href="<?php echo getAssetPath('images/favicon.png'); ?>">
+    <link rel="manifest" href="<?php echo getAssetPath('images/site.webmanifest'); ?>">
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -42,10 +38,10 @@ require_once 'config/database.php';
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo getAssetPath('css/style.css'); ?>">
 </head>
 <body>
-    <?php include 'includes/header.php'; ?>
+    <?php include getIncludePath('header.php'); ?>
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-video-container">
@@ -53,7 +49,7 @@ require_once 'config/database.php';
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="img-bg" style="background-color: #ffffff; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(50px); display: flex; justify-content: center; align-items: center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);">
-                            <img src="assets/images/logo.png" alt="LexJuris Logo" style="max-width: 80%; height: auto; filter: blur(8px) drop-shadow(0 4px 8px #00000080);">
+                            <img src="<?php echo getAssetPath('images/logo.png'); ?>" alt="LexJuris Logo" style="max-width: 80%; height: auto; filter: blur(8px) drop-shadow(0 4px 8px #00000080);">
                         </div>
                         <!-- <video autoplay muted loop playsinline class="hero-video">
                             <source src="videos/bgvideo3.mp4" type="video/mp4">
@@ -68,7 +64,7 @@ require_once 'config/database.php';
             <div class="row min-vh-100 align-items-center">
                 <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
                     <div class="logo">
-                        <img src="assets/images/footer_logo.png" style="width: 120px; height: 120px;" alt="LexJuris Logo" class="img-fluid rounded-circle">
+                        <img src="<?php echo getAssetPath('images/footer_logo.png'); ?>" style="width: 120px; height: 120px;" alt="LexJuris Logo" class="img-fluid rounded-circle">
                         <!-- <h4 display-4 fw-bold text-black mb-4>Law Chamber</h4> -->
                     </div>
                     <h1 class="display-4 fw-bold text-black mb-4">Professional Legal Services</h1>
@@ -1403,7 +1399,7 @@ require_once 'config/database.php';
         </div>
     </section>
 
-    <?php include 'includes/footer.php'; ?>
+    <?php include getIncludePath('footer.php'); ?>
 
     <!-- Bootstrap 5 JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

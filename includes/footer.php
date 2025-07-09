@@ -4,13 +4,17 @@
         <div class="row">
             <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
                 <div class="footer-brand mb-3">
-                    <a href="<?php echo ($current_page === 'home') ? 'index.php' : '../index.php'; ?>" class="text-decoration-none d-inline-block">
-                        <img src="<?php echo ($current_page === 'home') ? 'assets/images/footer_logo.png' : '../assets/images/footer_logo.png'; ?>" alt="Lex Juris Law Chamber" style="max-height: 80px;">
+                    <a href="<?php echo getPagePath('index.php'); ?>" class="text-decoration-none d-inline-block">
+                        <img src="<?php echo getAssetPath('images/footer_logo.png'); ?>" alt="Lex Juris Law Chamber" style="max-height: 80px;">
                     </a>
                 </div>
                 <p class="footer-description">Professional legal services for individuals and businesses. We're here to protect your rights and interests.</p>
                 <div class="social-links-footer mt-4">
                     <?php
+                    // Include path configuration if not already included
+                    if (!function_exists('getPagePath')) {
+                        require_once __DIR__ . '/../config/paths.php';
+                    }
                     require_once __DIR__ . '/../config/database.php';
                     $social_links = [];
                     $result = $conn->query("SELECT * FROM social_links WHERE is_active = 1 ORDER BY order_index ASC");
@@ -27,17 +31,15 @@
             </div>
 
             <?php
-            // Add project base logic as in header.php
-            $project_folder = explode('/', $_SERVER['SCRIPT_NAME'])[1];
-            $project_base = '/' . $project_folder . '/';
+            // Path configuration should already be included by now
 
             $nav_items = [
-                ['url' => $project_base . 'index.php', 'text' => 'Home'],
-                ['url' => $project_base . 'about/', 'text' => 'About'],
-                ['url' => $project_base . 'services/', 'text' => 'Services'],
-                ['url' => $project_base . 'teams/', 'text' => 'Teams'],
-                ['url' => $project_base . 'blog/', 'text' => 'Blog'],
-                ['url' => $project_base . 'contact/', 'text' => 'Contact']
+                ['url' => getPagePath('index.php'), 'text' => 'Home'],
+['url' => getPagePath('about/'), 'text' => 'About'],
+['url' => getPagePath('services/'), 'text' => 'Services'],
+['url' => getPagePath('teams/'), 'text' => 'Teams'],
+['url' => getPagePath('blog/'), 'text' => 'Blog'],
+['url' => getPagePath('contact/'), 'text' => 'Contact']
             ];
 
             // Split nav items for two columns
@@ -102,7 +104,7 @@
                 <span class="developed-by">
                     | Developed by
                     <a href="https://thebrandweave.com" target="_blank" class="dev-logo-link" aria-label="The Brand Weave">
-                        <img src="<?php echo ($current_page === 'home') ? 'assets/images/brandweave_logo1.png' : '../assets/images/brandweave_logo1.png'; ?>" alt="The Brand Weave" class="dev-logo">
+                        <img src="<?php echo getAssetPath('images/brandweave_logo1.png'); ?>" alt="The Brand Weave" class="dev-logo">
                     </a>
                 </span>
             </p>

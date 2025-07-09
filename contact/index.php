@@ -1,4 +1,7 @@
 <?php
+// Include path configuration
+require_once '../config/paths.php';
+
 $page_title = "Contact - LexJuris";
 $current_page = "contact";
 
@@ -37,20 +40,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="keywords" content="contact lexjuris, legal consultation mangalore, advocate contact, lawyer consultation karnataka, legal advice mangalore, law firm contact, best advocate contact">
     <title><?php echo $page_title; ?></title>
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
-    <link rel="apple-touch-icon" href="../assets/images/favicon.png">
-    <link rel="manifest" href="../assets/images/site.webmanifest">
+    <link rel="icon" type="image/png" href="<?php echo getAssetPath('images/favicon.png'); ?>">
+    <link rel="apple-touch-icon" href="<?php echo getAssetPath('images/favicon.png'); ?>">
+    <link rel="manifest" href="<?php echo getAssetPath('images/site.webmanifest'); ?>">
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;400;500;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo getAssetPath('css/style.css'); ?>">
 </head>
 <body>
-    <?php include '../includes/header.php'; ?>
+    <?php include getIncludePath('header.php'); ?>
 
     <!-- Contact Section -->
     <section class="contact-section py-5" style="background: var(--light-bg);">
@@ -293,11 +296,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </section>
 
-    <?php include '../includes/footer.php'; ?>
+    <?php include getIncludePath('footer.php'); ?>
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
-    <script src="../assets/js/main.js"></script>
+    <script src="<?php echo getAssetPath('js/main.js'); ?>"></script>
 </body>
 </html>
