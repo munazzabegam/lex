@@ -20,9 +20,9 @@ require_once getConfigPath('database.php');
     <meta name="keywords" content="about lexjuris, law firm mangalore, legal team karnataka, experienced advocates, law chamber history, legal services mangalore, trusted lawyers, professional advocates">
     <title><?php echo $page_title; ?></title>
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="<?php echo getAssetPath('images/favicon.png'); ?>">
-    <link rel="apple-touch-icon" href="<?php echo getAssetPath('images/favicon.png'); ?>">
-    <link rel="manifest" href="<?php echo getAssetPath('images/site.webmanifest'); ?>">
+    <link rel="icon" type="image/png" href="<?php echo getBaseUrl(); ?>/assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="<?php echo getBaseUrl(); ?>/assets/images/favicon.png">
+    <link rel="manifest" href="<?php echo getBaseUrl(); ?>/assets/images/site.webmanifest">
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -30,7 +30,7 @@ require_once getConfigPath('database.php');
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="<?php echo getAssetPath('css/style.css'); ?>">
+    <link rel="stylesheet" href="<?php echo getBaseUrl(); ?>/assets/css/style.css">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -294,7 +294,7 @@ require_once getConfigPath('database.php');
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
-    <script src="<?php echo getAssetPath('js/main.js'); ?>"></script>
+    <script src="<?php echo getBaseUrl(); ?>/assets/js/main.js"></script>
     <!-- Before </body> tag, ensure AOS is included and initialized -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>

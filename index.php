@@ -6,7 +6,7 @@ require_once __DIR__ . '/config/paths.php';
 
 // Check if disclaimer has been accepted
 if (!isset($_SESSION['disclaimer_accepted']) || $_SESSION['disclaimer_accepted'] !== true) {
-    header("Location: " . getPagePath('disclaimer/index.php'));
+    header("Location: " . getBaseUrl() . "/disclaimer/index.php");
     exit();
 }
 
