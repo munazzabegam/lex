@@ -1,6 +1,6 @@
 <?php
 // Include the path configuration first
-require_once __DIR__ . '/../config/paths.php';
+// require_once __DIR__ . '/../config/paths.php';
 
 // Then include the loader
 require_once(__DIR__ . '/loader.php');
@@ -8,19 +8,19 @@ require_once(__DIR__ . '/loader.php');
 $current_full_path = $_SERVER['PHP_SELF'];
 
 $nav_items = [
-    'home' => ['url' => getPagePath('index.php'), 'text' => 'Home', 'match' => '/index.php'],
-    'about' => ['url' => getPagePath('about/'), 'text' => 'About', 'match' => '/about/'],
-    'services' => ['url' => getPagePath('services/'), 'text' => 'Services', 'match' => '/services/'],
-    'our-teams' => ['url' => getPagePath('teams/'), 'text' => 'Teams', 'match' => '/teams/'],
-    'blog' => ['url' => getPagePath('blog/'), 'text' => 'Blog', 'match' => '/blog/'],
-    'contact' => ['url' => getPagePath('contact/'), 'text' => 'Contact', 'match' => '/contact/']
+    'home' => ['url' => '/index.php', 'text' => 'Home', 'match' => '/index.php'],
+    'about' => ['url' => '/about/', 'text' => 'About', 'match' => '/about/'],
+    'services' => ['url' => '/services/', 'text' => 'Services', 'match' => '/services/'],
+    'our-teams' => ['url' => '/teams/', 'text' => 'Teams', 'match' => '/teams/'],
+    'blog' => ['url' => '/blog/', 'text' => 'Blog', 'match' => '/blog/'],
+    'contact' => ['url' => '/contact/', 'text' => 'Contact', 'match' => '/contact/']
 ];
 ?>
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg fixed-top navbar-blur">
     <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="<?php echo getPagePath('index.php'); ?>">
-            <img src="<?php echo getAssetPath('images/logo.png'); ?>" alt="Lex Juris Logo" style="height:50px;width:auto;margin-right:10px;">
+        <a class="navbar-brand d-flex align-items-center" href="/index.php">
+            <img src="/assets/images/logo.png" alt="Lex Juris Logo" style="height:50px;width:auto;margin-right:10px;">
             <span class="text-warning">Lex</span> Juris
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -29,23 +29,23 @@ $nav_items = [
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link <?php echo ($current_full_path === getPagePath('index.php')) ? 'active' : ''; ?>" href="<?php echo getPagePath('index.php'); ?>">Home</a>
+                    <a class="nav-link <?php echo ($current_full_path === '/index.php') ? 'active' : ''; ?>" href="/index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php echo strpos($current_full_path, '/about/') !== false ? 'active' : ''; ?>" href="<?php echo getPagePath('about/'); ?>">About</a>
+                    <a class="nav-link <?php echo strpos($current_full_path, '/about/') !== false ? 'active' : ''; ?>" href="/about/">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php echo strpos($current_full_path, '/services/') !== false ? 'active' : ''; ?>" href="<?php echo getPagePath('services/'); ?>">Services</a>
+                    <a class="nav-link <?php echo strpos($current_full_path, '/services/') !== false ? 'active' : ''; ?>" href="/services/">Services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php echo strpos($current_full_path, '/teams/') !== false ? 'active' : ''; ?>" href="<?php echo getPagePath('teams/'); ?>">Teams</a>
+                    <a class="nav-link <?php echo strpos($current_full_path, '/teams/') !== false ? 'active' : ''; ?>" href="/teams/">Teams</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php echo strpos($current_full_path, '/blog/') !== false ? 'active' : ''; ?>" href="<?php echo getPagePath('blog/'); ?>">Blog</a>
+                    <a class="nav-link <?php echo strpos($current_full_path, '/blog/') !== false ? 'active' : ''; ?>" href="/blog/">Blog</a>
                 </li>
-                    <li class="nav-item">
-                    <a class="nav-link <?php echo strpos($current_full_path, '/contact/') !== false ? 'active' : ''; ?>" href="<?php echo getPagePath('contact/'); ?>">Contact</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link <?php echo strpos($current_full_path, '/contact/') !== false ? 'active' : ''; ?>" href="/contact/">Contact</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -81,7 +81,7 @@ $nav_items = [
                 <h1 class="display-4 text-white"><?php echo $page_title; ?></h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center">
-                        <li class="breadcrumb-item"><a href="<?php echo getPagePath('index.php'); ?>" class="text-white">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/index.php" class="text-white">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page" style="color: #bc841c;"><?php echo ucfirst($current_page); ?></li>
                     </ol>
                 </nav>

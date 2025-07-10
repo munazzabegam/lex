@@ -4,8 +4,8 @@
         <div class="row">
             <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
                 <div class="footer-brand mb-3">
-                    <a href="<?php echo getPagePath('index.php'); ?>" class="text-decoration-none d-inline-block">
-                        <img src="<?php echo getAssetPath('images/footer_logo.png'); ?>" alt="Lex Juris Law Chamber" style="max-height: 80px;">
+                    <a href="/index.php" class="text-decoration-none d-inline-block">
+                        <img src="/assets/images/footer_logo.png" alt="Lex Juris Law Chamber" style="max-height: 80px;">
                     </a>
                 </div>
                 <p class="footer-description">Professional legal services for individuals and businesses. We're here to protect your rights and interests.</p>
@@ -34,12 +34,12 @@
             // Path configuration should already be included by now
 
             $nav_items = [
-                ['url' => getPagePath('index.php'), 'text' => 'Home'],
-['url' => getPagePath('about/'), 'text' => 'About'],
-['url' => getPagePath('services/'), 'text' => 'Services'],
-['url' => getPagePath('teams/'), 'text' => 'Teams'],
-['url' => getPagePath('blog/'), 'text' => 'Blog'],
-['url' => getPagePath('contact/'), 'text' => 'Contact']
+                ['url' => '/index.php', 'text' => 'Home'],
+                ['url' => '/about/', 'text' => 'About'],
+                ['url' => '/services/', 'text' => 'Services'],
+                ['url' => '/teams/', 'text' => 'Teams'],
+                ['url' => '/blog/', 'text' => 'Blog'],
+                ['url' => '/contact/', 'text' => 'Contact']
             ];
 
             // Split nav items for two columns
@@ -104,7 +104,7 @@
                 <span class="developed-by">
                     | Developed by
                     <a href="https://thebrandweave.com" target="_blank" class="dev-logo-link" aria-label="The Brand Weave">
-                        <img src="<?php echo getAssetPath('images/brandweave_logo1.png'); ?>" alt="The Brand Weave" class="dev-logo">
+                        <img src="/assets/images/brandweave_logo1.png" alt="The Brand Weave" class="dev-logo">
                     </a>
                 </span>
             </p>
