@@ -22,7 +22,7 @@ require_once __DIR__ . '/../config/database.php';
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="../assets/images/favicon.png">
     <link rel="apple-touch-icon" href="../assets/images/favicon.png">
-    <link rel="manifest" href="/assets/images/site.webmanifest">
+    <link rel="manifest" href="../assets/images/site.webmanifest">
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -294,7 +294,7 @@ require_once __DIR__ . '/../config/database.php';
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
-    <script src="/assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
     <!-- Before </body> tag, ensure AOS is included and initialized -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
