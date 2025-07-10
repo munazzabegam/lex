@@ -4,8 +4,8 @@
         <div class="row">
             <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
                 <div class="footer-brand mb-3">
-                    <a href="../index.php" class="text-decoration-none d-inline-block">
-                        <img src="../assets/images/footer_logo.png" alt="Lex Juris Law Chamber" style="max-height: 80px;">
+                    <a href="<?php echo $asset_path; ?>index.php" class="text-decoration-none d-inline-block">
+                        <img src="<?php echo $asset_path; ?>assets/images/footer_logo.png" alt="Lex Juris Law Chamber" style="max-height: 80px;">
                     </a>
                 </div>
                 <p class="footer-description">Professional legal services for individuals and businesses. We're here to protect your rights and interests.</p>
@@ -34,12 +34,12 @@
             // Path configuration should already be included by now
 
             $nav_items = [
-                ['url' => '../index.php', 'text' => 'Home'],
-                ['url' => '../about/', 'text' => 'About'],
-                ['url' => '../services/', 'text' => 'Services'],
-                ['url' => '../teams/', 'text' => 'Teams'],
-                ['url' => '../blog/', 'text' => 'Blog'],
-                ['url' => '../contact/', 'text' => 'Contact']
+                ['url' => $asset_path . 'index.php', 'text' => 'Home'],
+                ['url' => $asset_path . 'about/', 'text' => 'About'],
+                ['url' => $asset_path . 'services/', 'text' => 'Services'],
+                ['url' => $asset_path . 'teams/', 'text' => 'Teams'],
+                ['url' => $asset_path . 'blog/', 'text' => 'Blog'],
+                ['url' => $asset_path . 'contact/', 'text' => 'Contact']
             ];
 
             // Split nav items for two columns
@@ -104,7 +104,7 @@
                 <span class="developed-by">
                     | Developed by
                     <a href="https://thebrandweave.com" target="_blank" class="dev-logo-link" aria-label="The Brand Weave">
-                        <img src="../assets/images/brandweave_logo1.png" alt="The Brand Weave" class="dev-logo">
+                        <img src="<?php echo $asset_path; ?>assets/images/brandweave_logo1.png" alt="The Brand Weave" class="dev-logo">
                     </a>
                 </span>
             </p>

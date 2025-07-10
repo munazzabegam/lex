@@ -16,6 +16,9 @@ $current_page = "home";
 // Mark this as the home page for the header include
 $is_home_page = true;
 
+// Set asset path for header/footer includes
+$asset_path = '';
+
 // Include database connection
 require_once __DIR__ . '/config/database.php';
 ?>
