@@ -1,12 +1,18 @@
 <?php
-// Include path configuration
-require_once '../config/paths.php';
+// Remove path config include
+// require_once '../config/paths.php';
 
 $page_title = "Contact - LexJuris";
 $current_page = "contact";
 
-// Include database connection
-require_once '../config/database.php';
+// Mark this as NOT the home page for the header include
+$is_home_page = false;
+
+// Set asset path for header/footer includes
+$asset_path = '../';
+
+// Include database connection using absolute path
+require_once __DIR__ . '/../config/database.php';
 
 // Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -40,9 +46,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="keywords" content="contact lexjuris, legal consultation mangalore, advocate contact, lawyer consultation karnataka, legal advice mangalore, law firm contact, best advocate contact">
     <title><?php echo $page_title; ?></title>
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="<?php echo getAssetPath('images/favicon.png'); ?>">
-    <link rel="apple-touch-icon" href="<?php echo getAssetPath('images/favicon.png'); ?>">
-    <link rel="manifest" href="<?php echo getAssetPath('images/site.webmanifest'); ?>">
+    <link rel="icon" type="image/png" href="<?php echo $asset_path; ?>assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="<?php echo $asset_path; ?>assets/images/favicon.png">
+    <link rel="manifest" href="<?php echo $asset_path; ?>assets/images/site.webmanifest">
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -50,10 +56,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;400;500;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="<?php echo getAssetPath('css/style.css'); ?>">
+    <link rel="stylesheet" href="<?php echo $asset_path; ?>assets/css/style.css">
 </head>
 <body>
-    <?php include getIncludePath('header.php'); ?>
+    <?php include __DIR__ . '/../includes/header.php'; ?>
 
     <!-- Contact Section -->
     <section class="contact-section py-5" style="background: var(--light-bg);">
@@ -296,11 +302,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </section>
 
-    <?php include getIncludePath('footer.php'); ?>
+    <?php include __DIR__ . '/../includes/footer.php'; ?>
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
-    <script src="<?php echo getAssetPath('js/main.js'); ?>"></script>
+    <script src="<?php echo $asset_path; ?>assets/js/main.js"></script>
 </body>
 </html>

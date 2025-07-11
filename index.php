@@ -6,7 +6,7 @@ session_start();
 
 // Check if disclaimer has been accepted
 if (!isset($_SESSION['disclaimer_accepted']) || $_SESSION['disclaimer_accepted'] !== true) {
-    header("Location: /disclaimer/index.php");
+    header("Location: disclaimer/index.php");
     exit();
 }
 

@@ -1,12 +1,18 @@
 <?php
-// Always include the path config first using a static path
-require_once __DIR__ . '/../config/paths.php';
+// Remove path config include
+// require_once __DIR__ . '/../config/paths.php';
 
 $page_title = "Teams - LexJuris";
 $current_page = "our-teams";
 
-// Include database connection
-require_once '../config/database.php';
+// Mark this as NOT the home page for the header include
+$is_home_page = false;
+
+// Set asset path for header/footer includes
+$asset_path = '../';
+
+// Include database connection using absolute path
+require_once __DIR__ . '/../config/database.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,9 +23,9 @@ require_once '../config/database.php';
     <meta name="keywords" content="legal team mangalore, expert advocates karnataka, law firm team, experienced lawyers, legal professionals, best advocates team, law chamber lawyers">
     <title><?php echo $page_title; ?></title>
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="<?php echo getPagePath('images/favicon.png'); ?>">
-    <link rel="apple-touch-icon" href="<?php echo getPagePath('images/favicon.png'); ?>">
-    <link rel="manifest" href="<?php echo getPagePath('images/site.webmanifest'); ?>">
+    <link rel="icon" type="image/png" href="<?php echo $asset_path; ?>assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="<?php echo $asset_path; ?>assets/images/favicon.png">
+    <link rel="manifest" href="<?php echo $asset_path; ?>assets/images/site.webmanifest">
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -27,10 +33,10 @@ require_once '../config/database.php';
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="<?php echo getAssetPath('css/style.css'); ?>">
+    <link rel="stylesheet" href="<?php echo $asset_path; ?>assets/css/style.css">
 </head>
 <body>
-    <?php include getIncludePath('header.php'); ?>
+    <?php include __DIR__ . '/../includes/header.php'; ?>
 
     <!-- Main Team Section -->
     <section class="team-section py-5">
@@ -52,7 +58,7 @@ require_once '../config/database.php';
                     while ($member = $main_team_result->fetch_assoc()) {
                         echo '<div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="' . ($index * 100) . '">
                             <div class="main-team-card">
-                                <img src="' . getPagePath(htmlspecialchars($member['photo'])) . '" alt="' . htmlspecialchars($member['full_name']) . '" class="team-img">
+                                <img src="' . $asset_path . htmlspecialchars($member['photo']) . '" alt="' . htmlspecialchars($member['full_name']) . '" class="team-img">
                                 <div class="team-info-overlay">
                                     <div class="team-header">
                                         <h3>
@@ -120,7 +126,7 @@ require_once '../config/database.php';
                     while ($member = $sub_junior_result->fetch_assoc()) {
                         echo '<div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="' . ($index * 100) . '">
                             <div class="main-team-card">
-                                <img src="' . getPagePath(htmlspecialchars($member['photo'])) . '" alt="' . htmlspecialchars($member['full_name']) . '" class="team-img">
+                                <img src="' . $asset_path . htmlspecialchars($member['photo']) . '" alt="' . htmlspecialchars($member['full_name']) . '" class="team-img">
                                 <div class="team-info-overlay">
                                     <div class="team-header">
                                         <h3>
@@ -188,7 +194,7 @@ require_once '../config/database.php';
                     while ($member = $udupi_result->fetch_assoc()) {
                         echo '<div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="' . ($index * 100) . '">
                             <div class="main-team-card">
-                                <img src="' . getPagePath(htmlspecialchars($member['photo'])) . '" alt="' . htmlspecialchars($member['full_name']) . '" class="team-img">
+                                <img src="' . $asset_path . htmlspecialchars($member['photo']) . '" alt="' . htmlspecialchars($member['full_name']) . '" class="team-img">
                                 <div class="team-info-overlay">
                                     <div class="team-header">
                                         <h3>
@@ -236,12 +242,12 @@ require_once '../config/database.php';
         </div>
     </section>
 
-    <?php include getIncludePath('footer.php'); ?>
+    <?php include __DIR__ . '/../includes/footer.php'; ?>
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
-    <script src="<?php echo getAssetPath('js/main.js'); ?>"></script>
+    <script src="<?php echo $asset_path; ?>assets/js/main.js"></script>
 
     <style>
         .main-team-card, .team-card {

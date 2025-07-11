@@ -63,7 +63,7 @@ $loader_styles = "
 $loader_html = "
 <div class='page-loader'>
     <div class='loader-content'>
-        <img src='" . getAssetPath('images/logo.png') . "' alt='Lex Juris Logo' class='loader-logo'>
+        <img src='" . (isset($asset_path) ? $asset_path : '') . "assets/images/logo.png' alt='Loading...' class='loader-logo'>
     </div>
 </div>
 ";

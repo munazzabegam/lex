@@ -43,9 +43,9 @@ $nav_items = [
                 <li class="nav-item">
                     <a class="nav-link <?php echo strpos($current_full_path, '/blog/') !== false ? 'active' : ''; ?>" href="<?php echo $asset_path; ?>blog/">Blog</a>
                 </li>
-                <li class="nav-item">
+                    <li class="nav-item">
                     <a class="nav-link <?php echo strpos($current_full_path, '/contact/') !== false ? 'active' : ''; ?>" href="<?php echo $asset_path; ?>contact/">Contact</a>
-                </li>
+                    </li>
             </ul>
         </div>
     </div>
